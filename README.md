@@ -89,23 +89,6 @@ python producer.py
 
 ---
 
-## 📊 Sample Output
-
-============================================================
-📥 Received: Bhai sach mein PM KISAN mein ab 10,000 rupees...
-   🌐 Language: Hindi (Hinglish)
-   🔄 Translated: Brother, PM KISAN now gives Rs 10,000 to farmers
-   ✅ Claim: PM KISAN provides Rs 10,000 per year to farmers
-   🔍 Searching facts...
-   📄 [0.91] PM-KISAN scheme provides Rs 6000 per year...
-   🤖 Verifying with Claude...
-============================================================
-   ⚠️ VERDICT: MISLEADING (Confidence: 95%)
-   💬 Reason: PM-KISAN provides Rs 6,000 per year, not Rs 10,000.
-============================================================
-
----
-
 ## 🔑 Key Design Decisions
 
 **Hinglish Detection** — langdetect struggles with Roman-script Hindi. A custom keyword matcher detects Hinglish before langdetect runs.
