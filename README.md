@@ -59,8 +59,8 @@ vernacular/
 ## Setup & Running
 
 ### 1. Clone the repo
-git clone https://github.com/yourusername/satyacheck.git
-cd satyacheck
+git clone https://github.com/LaranyaPradhan/SatyaCheck.git
+cd SatyaCheck
 
 ### 2. Create virtual environment
 python -m venv vernac
