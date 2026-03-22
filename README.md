@@ -18,8 +18,6 @@ Social Media Posts
 [ ChromaDB Vector Search ] → Step 4: Finds relevant verified facts via semantic search
       ↓
 [ LLM Verifier ]           → Step 5+6: Claude gives final verdict with confidence score
-      ↓
-✅ TRUE / ❌ FALSE / ⚠️ MISLEADING / ❓ UNVERIFIABLE
 
 ---
 
@@ -40,7 +38,6 @@ Hindi · Hinglish · Tamil · Telugu · Bengali · Marathi · Gujarati · Kannad
 | Vector Database | ChromaDB (local persistent) |
 | Embeddings | paraphrase-multilingual-MiniLM-L12-v2 |
 | LLM Verification | Claude Haiku API |
-
 ---
 
 ## 📁 Project Structure
@@ -55,7 +52,6 @@ vernacular/
 ├── docker-compose.yml    # Kafka setup
 ├── .env                  # API keys (never pushed to GitHub)
 └── chroma_db/            # Local vector database (auto-created)
-
 ---
 
 ## 🚀 Setup & Running
