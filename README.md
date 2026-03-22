@@ -1,12 +1,12 @@
-# SatyaCheck 🔍
+# SatyaCheck 
 ### Scalable Automated Fact-Checker for Vernacular Indian News
 
 An end-to-end AI-powered misinformation detection pipeline built for Indian languages. Ingests social media posts, detects language, extracts verifiable claims, and returns a TRUE / FALSE / MISLEADING verdict with confidence score and reasoning.
 
 ---
 
-## 🏗️ Pipeline Architecture
-
+## Pipeline Architecture
+```
 Social Media Posts
       ↓
 [ Apache Kafka ]           → Step 1: Message queue, handles thousands of posts/min
@@ -18,30 +18,32 @@ Social Media Posts
 [ ChromaDB Vector Search ] → Step 4: Finds relevant verified facts via semantic search
       ↓
 [ LLM Verifier ]           → Step 5+6: Claude gives final verdict with confidence score
+  
+```
+
+## Supported Languages
+
+Tested: Hindi (Hinglish) · Tamil · Bengali · English
+Supported via langdetect + Google Translate: Telugu · Marathi · Gujarati · Kannada · Malayalam · Punjabi · Urdu
 
 ---
 
-## 🌐 Supported Languages
+##  Tech Stack
 
-Hindi · Hinglish · Tamil · Telugu · Bengali · Marathi · Gujarati · Kannada · Malayalam · Punjabi · Urdu · English
+```
+Component              Technology
+─────────────────────────────────────────────────────────
+Message Queue        │ Apache Kafka (KRaft mode via Docker)
+Language Detection   │ langdetect + custom Hinglish detector
+Translation          │ Google Translate (deep-translator)
+Claim Extraction     │ Claude Haiku API
+Vector Database      │ ChromaDB (local persistent)
+Embeddings           │ paraphrase-multilingual-MiniLM-L12-v2
+LLM Verification     │ Claude Haiku API
+```
 
----
-
-## ⚙️ Tech Stack
-
-| Component | Technology |
-|---|---|
-| Message Queue | Apache Kafka (KRaft mode via Docker) |
-| Language Detection | langdetect + custom Hinglish detector |
-| Translation | Google Translate (deep-translator) |
-| Claim Extraction | Claude Haiku API |
-| Vector Database | ChromaDB (local persistent) |
-| Embeddings | paraphrase-multilingual-MiniLM-L12-v2 |
-| LLM Verification | Claude Haiku API |
----
-
-## 📁 Project Structure
-
+## Project Structure
+```
 vernacular/
 ├── producer.py           # Ingests posts into Kafka
 ├── consumer.py           # Worker: runs full pipeline per post
@@ -52,9 +54,9 @@ vernacular/
 ├── docker-compose.yml    # Kafka setup
 ├── .env                  # API keys (never pushed to GitHub)
 └── chroma_db/            # Local vector database (auto-created)
----
+```
 
-## 🚀 Setup & Running
+## Setup & Running
 
 ### 1. Clone the repo
 git clone https://github.com/yourusername/satyacheck.git
@@ -85,7 +87,7 @@ python producer.py
 
 ---
 
-## 🔑 Key Design Decisions
+## Key Design Decisions
 
 **Hinglish Detection** — langdetect struggles with Roman-script Hindi. A custom keyword matcher detects Hinglish before langdetect runs.
 
@@ -97,7 +99,7 @@ python producer.py
 
 ---
 
-## 🛡️ Scalability
+## Scalability
 
 - Kafka absorbs traffic spikes without data loss
 - Run 50 parallel workers with multiprocessing.Pool
